@@ -1,2 +1,2 @@
-# mini_project
+# README
 a project to practice workflows
