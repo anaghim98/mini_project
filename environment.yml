@@ -1,0 +1,10 @@
+name : mini_project
+channels:
+  - conda-forge
+  - base
+  - python
+
+dependecies:
+  - docker
+  - python
+  - snakemake
