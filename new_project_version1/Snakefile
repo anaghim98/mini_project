@@ -1,14 +1,5 @@
 rule all:
     input:
-        "/home/atemtem/Project/output_raw_kraken.txt",
-        "/home/atemtem/Project/output_raw_quast.txt",
-        "/home/atemtem/Project/output_organized.txt",
-        "/home/atemtem/Project/output_cutadapt.txt",
-        "/home/atemtem/Project/output_subsample.txt",
-        "/home/atemtem/Project/output_assembly.txt",
-        "/home/atemtem/Project/output_kraken_assembly.txt",
-        "/home/atemtem/Project/output_quast_assembly.txt",
-        "/home/atemtem/Project/output_assembly_filtered.txt",
         "/home/atemtem/Project/output_kraken_filtered_assembly.txt",
         "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
         "/home/atemtem/Project/output_amr_filtered_assembmy.txt",
@@ -34,30 +25,6 @@ rule organize_raw_data:
     run:
         """echo hello world > {output}"""
 
-
-rule kraken_raw_data:
-    # input:
-        # raw_dir="/home/atemtem/Project/raw",
-        # sctipt="/home/atemtem/scripts/kraken_raw.sh"
-    output:
-        "/home/atemtem/Project/output_raw_kraken.txt"
-    
-    shell:
-        """
-            echo hello world > {output}
-        """
-
-rule quast_raw_data:
-    # input:
-        # raw_dir="/home/atemtem/Project/raw",
-        # sctipt="/home/atemtem/scripts/quast.sh"
-    output:
-        "/home/atemtem/Project/output_raw_quast.txt"
-    
-    shell:
-        """
-           echo hello world > {output}
-        """
 
 rule cutadapt_raw_data:
     input:
@@ -95,30 +62,6 @@ rule assemble_subsampled_data:
            echo hello world > {output}
         """
 
-rule kraken_assembled_data:
-    input:
-        "/home/atemtem/Project/output_assembly.txt"
-        # sctipt="/home/atemtem/scripts/kraken.sh"
-    output:
-        "/home/atemtem/Project/output_kraken_assembly.txt"
-    
-    shell:
-        """
-            echo hello world > {output}
-        """
-
-
-rule quast_assembled_data:
-    input:
-         "/home/atemtem/Project/output_assembly.txt"
-        # sctipt="/home/atemtem/scripts/quast.sh"
-    output:
-         "/home/atemtem/Project/output_quast_assembly.txt"
-    
-    shell:
-        """
-            echo hello world > {output}
-        """
 rule filter_assembled_data:
     input:
          "/home/atemtem/Project/output_assembly.txt"
