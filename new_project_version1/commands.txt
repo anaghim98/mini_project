@@ -1,0 +1,31 @@
+
+
+##### What our user should do to run our pipeline !
+#######" Clone the repository of the project
+
+git clone https://......................
+cd name_repo
+
+#######" create a new environment base on our snakemake.yml file
+
+conda env create --file envs/snakemake_env.yml
+
+########" activate the new environment that have been created
+
+conda activate snakemake_env
+
+########### First DRY-RUN pipeline to make sure everything is working just fine
+
+snakemake -pj10 --use-conda output/result.csv -np
+
+-np is for :
+    --dry-run, --dryrun, -n
+                            Do not execute anything, and display what would be
+                            done. If you have a very large workflow, use --dry-run
+                            --quiet to just print a summary of the DAG of jobs.
+                            (default: False)
+    
+    
+    --printshellcmds, -p  Print out the shell commands that will be executed.
+                        (default: False)
+

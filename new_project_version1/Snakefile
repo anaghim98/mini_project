@@ -1,0 +1,255 @@
+rule all:
+    input:
+        "/home/atemtem/Project/output_raw_kraken.txt",
+        "/home/atemtem/Project/output_raw_quast.txt",
+        "/home/atemtem/Project/output_organized.txt",
+        "/home/atemtem/Project/output_cutadapt.txt",
+        "/home/atemtem/Project/output_subsample.txt",
+        "/home/atemtem/Project/output_assembly.txt",
+        "/home/atemtem/Project/output_kraken_assembly.txt",
+        "/home/atemtem/Project/output_quast_assembly.txt",
+        "/home/atemtem/Project/output_assembly_filtered.txt",
+        "/home/atemtem/Project/output_kraken_filtered_assembly.txt",
+        "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_amr_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_mlpasmid_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_mobsuite_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_pyMLST_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_FimTyper_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_ClermonTyping_filtered_assembmy.txt",
+        "/home/atemtem/Project/gene_resistance.txt",
+        "/home/atemtem/Project/output_results.txt"
+
+
+
+
+rule organize_raw_data:
+    # input:
+        # raw_dir="/home/atemtem/Project/raw",
+        # sctipt="/home/atemtem/scripts/organize.py"
+    output: 
+        "/home/atemtem/Project/output_organized.txt"
+    resources:
+        latency_wait = 30
+    run:
+        """echo hello world > {output}"""
+
+
+rule kraken_raw_data:
+    # input:
+        # raw_dir="/home/atemtem/Project/raw",
+        # sctipt="/home/atemtem/scripts/kraken_raw.sh"
+    output:
+        "/home/atemtem/Project/output_raw_kraken.txt"
+    
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule quast_raw_data:
+    # input:
+        # raw_dir="/home/atemtem/Project/raw",
+        # sctipt="/home/atemtem/scripts/quast.sh"
+    output:
+        "/home/atemtem/Project/output_raw_quast.txt"
+    
+    shell:
+        """
+           echo hello world > {output}
+        """
+
+rule cutadapt_raw_data:
+    input:
+         "/home/atemtem/Project/output_organized.txt"
+        # sctipt="/home/atemtem/scripts/cutadapt_them.py"
+    output:
+        "/home/atemtem/Project/output_cutadapt.txt"
+    
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule subsample_cutadapted_data:
+    input:
+        "/home/atemtem/Project/output_cutadapt.txt"
+        # sctipt="/home/atemtem/scripts/subsample_them.py"
+    output:
+        "/home/atemtem/Project/output_subsample.txt"
+    
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule assemble_subsampled_data:
+    input:
+        "/home/atemtem/Project/output_subsample.txt"
+        # sctipt="/home/atemtem/scripts/assemble_them.py"
+    output:
+        "/home/atemtem/Project/output_assembly.txt"
+    
+    shell:
+        """
+           echo hello world > {output}
+        """
+
+rule kraken_assembled_data:
+    input:
+        "/home/atemtem/Project/output_assembly.txt"
+        # sctipt="/home/atemtem/scripts/kraken.sh"
+    output:
+        "/home/atemtem/Project/output_kraken_assembly.txt"
+    
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+
+rule quast_assembled_data:
+    input:
+         "/home/atemtem/Project/output_assembly.txt"
+        # sctipt="/home/atemtem/scripts/quast.sh"
+    output:
+         "/home/atemtem/Project/output_quast_assembly.txt"
+    
+    shell:
+        """
+            echo hello world > {output}
+        """
+rule filter_assembled_data:
+    input:
+         "/home/atemtem/Project/output_assembly.txt"
+        # sctipt="/home/atemtem/scripts/filter_contigs.py"
+    output:
+        "/home/atemtem/Project/output_assembly_filtered.txt"
+    
+    shell:
+        """
+           echo hello world > {output}
+        """
+
+rule kraken_filtered_data:
+    input:
+        "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/kraken.sh"
+    output:
+        "/home/atemtem/Project/output_kraken_filtered_assembly.txt"
+    shell:
+        """
+          echo hello world > {output}
+        """
+
+rule quast_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/quast.sh"
+    output:
+        "/home/atemtem/Project/output_quast_filtered_assembmy.txt"
+    
+    shell: 
+        """
+            echo hello world > {output}
+        """
+
+
+
+rule amr_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/amrfind_them.sh"
+    output:
+        "/home/atemtem/Project/output_amr_filtered_assembmy.txt"
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule mlplasmid_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/mplasmid_them.sh"
+    output:
+        "/home/atemtem/Project/output_mlpasmid_filtered_assembmy.txt",
+    shell:
+        """
+           echo hello world > {output}
+        """
+rule mobsuite_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/mobsuite_them.sh"
+    output:
+        "/home/atemtem/Project/output_mobsuite_filtered_assembmy.txt",
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule gene_resistance:
+    input:
+        "/home/atemtem/Project/output_mlpasmid_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_mobsuite_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_amr_filtered_assembmy.txt"
+    output:
+        "/home/atemtem/Project/gene_resistance.txt",
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule pyMLST_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/pyMLST_them.sh"
+    output:
+        "/home/atemtem/Project/output_pyMLST_filtered_assembmy.txt",
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+rule FimTyper_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/FimTyper_them.sh"
+    output:
+        "/home/atemtem/Project/output_FimTyper_filtered_assembmy.txt",
+    shell:
+        """
+           echo hello world > {output}
+        """
+
+rule ClermonTyper_filtered_data:
+    input:
+         "/home/atemtem/Project/output_assembly_filtered.txt"
+        # script="/home/atemtem/scripts/Clermontype_them.sh"
+    output:
+        "/home/atemtem/Project/output_ClermonTyping_filtered_assembmy.txt"
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+
+rule Generate_the_result_table:
+    input:
+        "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
+        "/home/atemtem/Project/gene_resistance.txt",
+        "/home/atemtem/Project/output_pyMLST_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_FimTyper_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_ClermonTyping_filtered_assembmy.txt"
+        
+    output:
+        "/home/atemtem/Project/output_results.txt"
+    shell:
+        """
+            echo hello world > {output}
+        """
+
+
+
+
+

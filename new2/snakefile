@@ -1,0 +1,6 @@
+rule hello:
+    output: 'test.txt'
+    resources:
+        mem_mb=100
+    shell: 'echo hello {resources.mem_mb} {resources.tmpdir} > {output}'
+        
