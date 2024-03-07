@@ -193,7 +193,7 @@ rule ClermonTyper_filtered_data:
 
 rule Generate_the_result_table:
     input:
-        "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
+        # "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
         "/home/atemtem/Project/gene_resistance.txt",
         "/home/atemtem/Project/output_pyMLST_filtered_assembmy.txt",
         "/home/atemtem/Project/output_FimTyper_filtered_assembmy.txt",
