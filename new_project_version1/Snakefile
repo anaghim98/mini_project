@@ -1,7 +1,5 @@
 rule all:
     input:
-        "/home/atemtem/Project/output_kraken_filtered_assembly.txt",
-        "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
         "/home/atemtem/Project/output_amr_filtered_assembmy.txt",
         "/home/atemtem/Project/output_mlpasmid_filtered_assembmy.txt",
         "/home/atemtem/Project/output_mobsuite_filtered_assembmy.txt",
@@ -97,11 +95,22 @@ rule quast_filtered_data:
             echo hello world > {output}
         """
 
+rule ckech_continue:
+    input:
+        "/home/atemtem/Project/output_quast_filtered_assembmy.txt",
+        "/home/atemtem/Project/output_assembly_filtered.txt"
+    output:
+        "/home/atemtem/Project/checkpoint.txt"
+    shell: 
+        """
+            echo hello world > {output}
+        """
 
 
 rule amr_filtered_data:
     input:
-         "/home/atemtem/Project/output_assembly_filtered.txt"
+        "/home/atemtem/Project/checkpoint.txt", 
+        "/home/atemtem/Project/output_assembly_filtered.txt"
         # script="/home/atemtem/scripts/amrfind_them.sh"
     output:
         "/home/atemtem/Project/output_amr_filtered_assembmy.txt"
@@ -112,7 +121,8 @@ rule amr_filtered_data:
 
 rule mlplasmid_filtered_data:
     input:
-         "/home/atemtem/Project/output_assembly_filtered.txt"
+        "/home/atemtem/Project/checkpoint.txt", 
+        "/home/atemtem/Project/output_assembly_filtered.txt"
         # script="/home/atemtem/scripts/mplasmid_them.sh"
     output:
         "/home/atemtem/Project/output_mlpasmid_filtered_assembmy.txt",
@@ -122,7 +132,8 @@ rule mlplasmid_filtered_data:
         """
 rule mobsuite_filtered_data:
     input:
-         "/home/atemtem/Project/output_assembly_filtered.txt"
+        "/home/atemtem/Project/checkpoint.txt", 
+        "/home/atemtem/Project/output_assembly_filtered.txt"
         # script="/home/atemtem/scripts/mobsuite_them.sh"
     output:
         "/home/atemtem/Project/output_mobsuite_filtered_assembmy.txt",
@@ -145,7 +156,8 @@ rule gene_resistance:
 
 rule pyMLST_filtered_data:
     input:
-         "/home/atemtem/Project/output_assembly_filtered.txt"
+        "/home/atemtem/Project/checkpoint.txt", 
+        "/home/atemtem/Project/output_assembly_filtered.txt"
         # script="/home/atemtem/scripts/pyMLST_them.sh"
     output:
         "/home/atemtem/Project/output_pyMLST_filtered_assembmy.txt",
@@ -156,7 +168,8 @@ rule pyMLST_filtered_data:
 
 rule FimTyper_filtered_data:
     input:
-         "/home/atemtem/Project/output_assembly_filtered.txt"
+        "/home/atemtem/Project/checkpoint.txt", 
+        "/home/atemtem/Project/output_assembly_filtered.txt"
         # script="/home/atemtem/scripts/FimTyper_them.sh"
     output:
         "/home/atemtem/Project/output_FimTyper_filtered_assembmy.txt",
@@ -167,7 +180,8 @@ rule FimTyper_filtered_data:
 
 rule ClermonTyper_filtered_data:
     input:
-         "/home/atemtem/Project/output_assembly_filtered.txt"
+        "/home/atemtem/Project/checkpoint.txt", 
+        "/home/atemtem/Project/output_assembly_filtered.txt"
         # script="/home/atemtem/scripts/Clermontype_them.sh"
     output:
         "/home/atemtem/Project/output_ClermonTyping_filtered_assembmy.txt"
